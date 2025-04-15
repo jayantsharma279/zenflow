@@ -76,13 +76,15 @@ with torch.no_grad():
     probs = torch.softmax(logits, dim=1).squeeze()
 
 # Get prediction
-pred_class = torch.argmax(probs).item()
-confidence = probs[pred_class].item()
-label_map = {0: "Baseline", 1: "Stress", 2: "Other"}  # Adjust as per model
-
+logits = model(input_tensor)
+probs = torch.sigmoid(logits).squeeze()  # shape: scalar (0-dim tensor)
+confidence = probs.item()
+pred_class = 1 if confidence > 0.5 else 0
+label_map = {0: "Baseline", 1: "Stress"}
 
 st.markdown("### 🤖 Model Prediction")
 st.metric("Predicted State", label_map[pred_class], f"{confidence*100:.1f}% confidence")
+
 
 # Optional debug info
 with st.expander("Show Raw Probabilities"):
