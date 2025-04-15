@@ -87,7 +87,7 @@ st.metric("Predicted State", label_map[pred_class], f"{confidence*100:.1f}% conf
 
 
 # Optional debug info
-with st.expander("Show Raw Probabilities"):
-    for i, p in enumerate(probs):
-        st.write(f"Class {label_map[i]}: {p:.3f}")
+with st.expander("Show Raw Probability"):
+    st.write(f"Probability of Stress (class 1): {confidence:.3f}")
+
 
