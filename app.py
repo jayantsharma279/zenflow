@@ -63,7 +63,7 @@ class StressLSTM(nn.Module):
 
 # Load the model
 model = StressLSTM()
-model.load_state_dict(torch.load("LSTM_weights.pt", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("LSTM_weights",  weights_only=True))
 model.eval()
 
 
