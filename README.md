@@ -10,11 +10,10 @@ describes the data sources and processing methods used, the model architecture a
 
 ## Real Time Stress detection
 
-![Alt text](images/my_picture.png)
-```python
-def hello():
-    print("Hello, GitHub!")
-```
+![Alt text](images/app_demo.png)
+![Alt text](images/app_demo2.png)
+
+A real time interface with the trained model is provided, which uses Streamlit to simulate ECG and EDA signals from a subject. Users can trigger a stress spike, which initiates an elevated state of stress by simulating the signals accordint to the dataset. 
 
 ### Dataset
 The WESAD (Wearable Stress and Affect Detection) dataset is a publicly available multimodal benchmark designed for research on automatic stress and emotion recognition from wearable sensors. The WESAD dataset supplies chest and wrist worn physiological signals for 15 graduate students in Germany, exposed to baseline, amusement, meditation and Trier Social Stress Test conditions. Chest data (ACC, ECG, EDA, EMG, RESP, TEMP) were sampled at 700 Hz with a RespiBAN Professional strap, while the Empatica E4 wristband provided ACC (32 Hz), BVP (64 Hz), EDA (4 Hz) and skin temperature (4 Hz) and average heart rate (1 Hz) extracted from the BVP signal.
