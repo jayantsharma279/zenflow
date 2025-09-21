@@ -8,6 +8,14 @@ This project aims to create a machine learning-based system that can detect and 
 We focus on two primary biosignals: heart rate (HR), derived from electrocardiography (ECG)[3], and electrodermal activity (EDA), both of which are directly related to the autonomic nervous system’s stress response. Using the WESAD dataset [4], a well-established multimodal dataset containing HR and EDA signals from wearable devices, we trained and evaluated three models: a long-short-term memory (LSTM) neural network model, Random Forest, a hybrid LSTM-Fully Convolutional Network (LSTM-FCN) to classify current stress states and forecast future ones in a simulated real-time setting. This report presents the motivation behind the development of ZenFlow,
 describes the data sources and processing methods used, the model architecture and evaluation metrics, and discusses the broader significance and impact of our findings in the context of wearable health technologies and personalized stress prediction.
 
+## Real Time Stress detection
+
+![Alt text](images/my_picture.png)
+```python
+def hello():
+    print("Hello, GitHub!")
+```
+
 ### Dataset
 The WESAD (Wearable Stress and Affect Detection) dataset is a publicly available multimodal benchmark designed for research on automatic stress and emotion recognition from wearable sensors. The WESAD dataset supplies chest and wrist worn physiological signals for 15 graduate students in Germany, exposed to baseline, amusement, meditation and Trier Social Stress Test conditions. Chest data (ACC, ECG, EDA, EMG, RESP, TEMP) were sampled at 700 Hz with a RespiBAN Professional strap, while the Empatica E4 wristband provided ACC (32 Hz), BVP (64 Hz), EDA (4 Hz) and skin temperature (4 Hz) and average heart rate (1 Hz) extracted from the BVP signal.
 
@@ -60,16 +68,16 @@ On the held-out test set the LSTM-FCN achieved 93.1 % overall accuracy, confirmi
 
 ### References
 
-[1] The American Institute of Stress. (2025, April 24). TEENS YOUNG ADULTS - The American Institute of
+1. The American Institute of Stress. (2025, April 24). TEENS YOUNG ADULTS - The American Institute of
 Stress. https://www.stress.org/who-gets-stressed/teens-young-adults/
-[2] Steptoe, Andrew, and Mika Kivimäki. “Stress and cardiovascular disease.” Nature reviews. Cardiology vol.
+2.  Steptoe, Andrew, and Mika Kivimäki. “Stress and cardiovascular disease.” Nature reviews. Cardiology vol.
 9,6 360-70. 3 Apr. 2012, doi:10.1038/nrcardio.2012.45
-[3] Zhang, P., Li, F., Du, L., Zhao, R., Chen, X., Yang, T., Fang, Z. (2021). Psychological Stress Detection
+3.  Zhang, P., Li, F., Du, L., Zhao, R., Chen, X., Yang, T., Fang, Z. (2021). Psychological Stress Detection
 According to ECG Using a Deep Learning Model with Attention Mechanism. Applied Sciences, 11(6), 2848.
 https://doi.org/10.3390/app11062848
-[4] Philip Schmidt, Attila Reiss, Robert Duerichen, Claus Marberger and Kristof Van Laerhoven, "Introducing
+4.  Philip Schmidt, Attila Reiss, Robert Duerichen, Claus Marberger and Kristof Van Laerhoven, "Introducing
 WESAD, a multimodal dataset for Wearable Stress and Affect Detection", ICMI 2018, Boulder, USA, 2018
-[5] F. Karim, S. Majumdar, H. Darabi and S. Chen, “LSTM Fully Convolutional Networks for Time-Series
+5.  F. Karim, S. Majumdar, H. Darabi and S. Chen, “LSTM Fully Convolutional Networks for Time-Series
 Classification,” IEEE Access, vol. 6, pp. 1662-1669, 2018.
-[6] S. Hochreiter and J. Schmidhuber, "Long Short-Term Memory," in Neural Computation, vol. 9, no. 8, pp.
+6.  S. Hochreiter and J. Schmidhuber, "Long Short-Term Memory," in Neural Computation, vol. 9, no. 8, pp.
 1735-1780, 15 Nov. 1997, doi: 10.1162/neco.1997.9.8.1735.
