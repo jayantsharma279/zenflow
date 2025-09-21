@@ -1,6 +1,6 @@
 ## Zenflow: AI powered real time stress monitoring and prediction using EEG and ECG 
 
-### Sami Smayra, Jayant Sharma, Hannah Manheimer, Yifan Wang 
+### Jayant Sharma, Hannah Manheimer, Yifan Wang, Sami Smayra
 ### Projects in Biomedical AI - Spring 2025
 
 ### Introduction
@@ -10,13 +10,15 @@ describes the data sources and processing methods used, the model architecture a
 
 ## Real Time Stress detection
 
-<img src="images/app_demo.png" alt="My Picture" width="300"/>
-<img src="images/app_demo2.png" alt="My Picture" width="300"/>
+<img src="images/app_demo.png" width="500"/>           <img src="images/app_demo2.png" width="500"/>
+
 
 A real time interface with the trained model is provided, which uses Streamlit to simulate ECG and EDA signals from a subject. Users can trigger a stress spike, which initiates an elevated state of stress by simulating the signals accordint to the dataset. 
 
 ### Dataset
 The WESAD (Wearable Stress and Affect Detection) dataset is a publicly available multimodal benchmark designed for research on automatic stress and emotion recognition from wearable sensors. The WESAD dataset supplies chest and wrist worn physiological signals for 15 graduate students in Germany, exposed to baseline, amusement, meditation and Trier Social Stress Test conditions. Chest data (ACC, ECG, EDA, EMG, RESP, TEMP) were sampled at 700 Hz with a RespiBAN Professional strap, while the Empatica E4 wristband provided ACC (32 Hz), BVP (64 Hz), EDA (4 Hz) and skin temperature (4 Hz) and average heart rate (1 Hz) extracted from the BVP signal.
+
+<img src="images/data_engineering.png" width="400"/>
 
 ### Model descriptions:
 
@@ -25,7 +27,9 @@ The model consisted of 100 trees, each limited to a maximum depth of 2, with min
 
 #### 2. Long Short Term Memory (LSTM)
 The model was trained on sequences of multichannel biosignals (definition and preprocessing details in the previous section) all sampled at 1Hz. Each input sequence represents a fixed-length window (e.g., 50 time steps), capturing recent temporal trends. The input to the model was thus batched in dimensions representing this approach, with the input data was in the form of a three dimensional tensor (batch size, sequence length, number of inputs. For example, for a 10 second data window, the input data
-received by the LSTM was in the form of (32, 10, 4). The network processes these sequences and outputs a single logit indicating the probability of a stress state. The architecture is particularly well-suited for detecting patterns that unfold over time, such as gradual increases in HR or delayed EDA peaks associated with stress responses
+received by the LSTM was in the form of (32, 10, 4). The network processes these sequences and outputs a single logit indicating the probability of a stress state. The architecture is particularly well-suited for detecting patterns that unfold over time, such as gradual increases in HR or delayed EDA peaks associated with stress responses.
+
+<img src="images/LSTM_arch.png" width="400"/> 
 
 | Hyperparameter         | Value                                   |
 |-------------------------|-----------------------------------------|
@@ -51,9 +55,6 @@ softmax layer that yields the posterior probabilities of stress versus normal.
 | FCN Conv3 layer      | 128 channels, kernel size 3               |
 | Final FC layer       | 192 (LSTM output 64 + FCN output 128)     |
 
-
-### Running the web application for real time prediction:
-
 ### Results
 
 The LSTM-only model achieved an accuracy of 89%, precision of 90%, and F1-score of 84.4% on the held-out test set. These results suggest strong capability in identifying stress episodes from wearable biosignals. Epochs were set at 30 for both the models, and the loss curve showed a steady decrease, indicating no overfitting in either models.
@@ -64,6 +65,8 @@ On the held-out test set the LSTM-FCN achieved 93.1 % overall accuracy, confirmi
 | Random Forest Classifier | 74%      | 79%      |
 | LSTM                     | 89%      | 84.4%    |
 | LSTM + FCN               | 93.1%    | 90.6%    |
+
+<img src="images/LSTM-only.png" width="300"/>                            <img src="images/LSTM-FCN.png" width="300"/>
 
 ### References
 
