@@ -10,8 +10,8 @@ describes the data sources and processing methods used, the model architecture a
 
 ## Real Time Stress detection
 
-![Alt text](images/app_demo.png)
-![Alt text](images/app_demo2.png)
+<img src="images/app_demo.png" alt="My Picture" width="300"/>
+<img src="images/app_demo2.png" alt="My Picture" width="300"/>
 
 A real time interface with the trained model is provided, which uses Streamlit to simulate ECG and EDA signals from a subject. Users can trigger a stress spike, which initiates an elevated state of stress by simulating the signals accordint to the dataset. 
 
